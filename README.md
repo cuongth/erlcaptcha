@@ -12,7 +12,7 @@ Add erlcaptcha to your list of dependencies within `rebar.config`:
 %% rest of rebar.config
 {deps, [
     %% other deps
-    {erlcaptcha, "~>2.0"}
+    {erlcaptcha, "~>3.1"}
 ]}.
 ```
 

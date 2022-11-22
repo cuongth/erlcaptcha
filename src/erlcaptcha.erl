@@ -34,7 +34,7 @@ api_req(ReqBody) ->
     ContentType = "application/x-www-form-urlencoded",
     {ok, {_RespCode, _RespHeaders, Body}} = httpc:request(post, {?API_ENDPOINT, [], ContentType, ReqBody}, [], ReqOpts),
     io:format("decoding ~p...~n", [binary_to_list(Body)]),
-    resp_from_json(jsx:decode(Body)).
+    resp_from_json(jsx:decode(Body, [{return_maps, false}])).
 
 resp_from_json(Json) ->
     case proplists:get_value(<<"error-codes">>, Json) of

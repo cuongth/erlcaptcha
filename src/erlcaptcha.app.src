@@ -8,4 +8,4 @@
               {modules,[]},
               {licenses,["Apache 2.0"]},
               {maintainers,["Goncalo Tomas"]},
-              {links,[{"Github","https://github.com/ClicaAi/erlcaptcha"}]}]}.
+              {links,[{"Github","https://github.com/cuongth/erlcaptcha"}]}]}.
