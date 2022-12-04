@@ -2,7 +2,7 @@
 -module(erlcaptcha).
 
 %% API
--export([verify/1, verify/2]).
+-export([verify/2, verify/3]).
 
 -define(SERVER, ?MODULE).
 -define(API_ENDPOINT, "https://www.google.com/recaptcha/api/siteverify").
@@ -19,14 +19,12 @@
                        invalid_input_response |
                        bad_request.
 
--spec verify(binary()) -> success_resp() | error_resp().
-verify(Response) ->
-    {ok, Secret} = application:get_env(?APP, secret),
+-spec verify(binary(), binary()) -> success_resp() | error_resp().
+verify(Secret, Response) ->
     api_req(uri_string:compose_query([{"secret", Secret}, {"response", Response}])).
 
--spec verify(binary(), binary()) -> success_resp() | error_resp().
-verify(Response, RemoteIP) ->
-    {ok, Secret} = application:get_env(?APP, secret),
+-spec verify(binary(), binary(), binary()) -> success_resp() | error_resp().
+verify(Secret, Response, RemoteIP) ->
     api_req(uri_string:compose_query([{"secret", Secret}, {"response", Response}, {"remoteip", RemoteIP}])).
 
 api_req(ReqBody) ->
